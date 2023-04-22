@@ -38,7 +38,7 @@ exports.createTak = async (req, res) => {
     res.status(201).send({
       message: "Task created successfully",
       id: task._id,
-      link: `http://localhost:8000/api/task/join/${task._id}`,
+      link: `http://13.233.147.4:8000/api/task/join/${task._id}`,
       name: task.name,
     });
   } catch (e) {
