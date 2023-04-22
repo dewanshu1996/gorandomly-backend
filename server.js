@@ -14,7 +14,6 @@ const app = express();
 const port = process.env.PORT;
 
 const dev = process.env.NODE_ENV !== "production";
-console.log(dev);
 const frontend = next({ dev, dir: "./frontend" });
 const handle = frontend.getRequestHandler();
 
@@ -34,7 +33,7 @@ const io = socketIO(server, {
 app.set("socketio", io);
 app.use(handle);
 app.use("*", (req, res) => {
-  return app.render(req, res, "/");
+  return handle(req, res);
 });
 
 require("./app/config/socket.config")(io);
